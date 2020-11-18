@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<data>
+    <variable
+        name="pokemon"
+        type="com.alex.proyectoapirestful.models.Pokemon.PokemonView" />
+</data>
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageViewSpritePk"
+            android:layout_width="152dp"
+            android:layout_height="163dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            imageUrl="@{pokemon.sprite}"
+            app:srcCompat="@drawable/ic_baseline_account_box_24" />
+
+        <TextView
+            android:id="@+id/textViewTittleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="24dp"
+            android:text="Name"
+            app:layout_constraintEnd_toStartOf="@+id/textViewName"
+            app:layout_constraintHorizontal_bias="0.724"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewSpritePk" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="8dp"
+            android:text="Type"
+            app:layout_constraintEnd_toStartOf="@+id/textViewType"
+            app:layout_constraintHorizontal_bias="0.696"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTittleAbility" />
+
+        <TextView
+            android:id="@+id/textViewTittleAbility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="8dp"
+            android:text="Ability"
+            app:layout_constraintEnd_toStartOf="@+id/textViewAbility"
+            app:layout_constraintHorizontal_bias="0.733"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTittleName" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="132dp"
+            android:text="@{pokemon.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewSpritePk" />
+
+        <TextView
+            android:id="@+id/textViewAbility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="132dp"
+            android:text="@{pokemon.ability}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+
+        <TextView
+            android:id="@+id/textViewType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="136dp"
+            android:text="@{pokemon.type}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAbility" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
+</layout>
