@@ -1,9 +1,10 @@
 package com.alex.proyectoapirestful.repositories
 
-import com.alex.proyectoapirestful.models.Pokemon.Pokemon
-import com.alex.proyectoapirestful.models.Pokemon.PokemonURL
-import com.alex.proyectoapirestful.net.RetroFitInstance
+import com.alex.proyectoapirestful.models.pokemon.Pokemon
+import com.alex.proyectoapirestful.models.pokemon.PokemonURL
+import com.alex.proyectoapirestful.models.type.Type
 import com.alex.proyectoapirestful.models.type.Types
+import com.alex.proyectoapirestful.net.RetroFitInstance
 import retrofit2.Call
 import retrofit2.Response
 import java.lang.Exception
@@ -52,9 +53,34 @@ class PokemonRepository {
             }
         )
     }
-    /*suspend fun  getTypeByName(name: String): Types {
+    suspend fun  getType(): Type {
         return suspendCoroutine {continuation ->
-            RetroFitInstance.pokemonService.getTypeByName().enqueue(object : retrofit2.Callback<Types>{
+            RetroFitInstance.pokemonService.getType().enqueue(object : retrofit2.Callback<Type>{
+                override fun onFailure(call: Call<Type>, t: Throwable) {
+                    continuation.resumeWithException(t)
+                }
+
+                override fun onResponse(
+                    call: Call<Type>,
+                    response: Response<Type>
+                ) {
+                    if(response.isSuccessful){
+                        continuation.resume(response.body()!!)
+                    }else{
+                        continuation.resumeWithException(Exception("La respuesta del tipo no fue exitosa"))
+
+                    }
+                }
+
+
+            })
+
+        }
+    }
+
+    suspend fun  getByType(tipo: String): Types {
+        return suspendCoroutine {continuation ->
+            RetroFitInstance.pokemonService.getByType(tipo).enqueue(object : retrofit2.Callback<Types>{
                 override fun onFailure(call: Call<Types>, t: Throwable) {
                     continuation.resumeWithException(t)
                 }
@@ -62,6 +88,31 @@ class PokemonRepository {
                 override fun onResponse(
                     call: Call<Types>,
                     response: Response<Types>
+                ) {
+                    if(response.isSuccessful){
+                        continuation.resume(response.body()!!)
+                    }else{
+                        continuation.resumeWithException(Exception("La respuesta del tipo no fue exitosa"))
+
+                    }
+                }
+
+
+            })
+
+        }
+    }
+
+    suspend fun  getByPokemon(name: String): PokemonURL {
+        return suspendCoroutine {continuation ->
+            RetroFitInstance.pokemonService.getByPokemon(name).enqueue(object : retrofit2.Callback<PokemonURL>{
+                override fun onFailure(call: Call<PokemonURL>, t: Throwable) {
+                    continuation.resumeWithException(t)
+                }
+
+                override fun onResponse(
+                    call: Call<PokemonURL>,
+                    response: Response<PokemonURL>
                 ) {
                     if(response.isSuccessful){
                         continuation.resume(response.body()!!)
@@ -90,7 +141,7 @@ class PokemonRepository {
 
             }
         )
-    }*/
+    }
 
 
 }

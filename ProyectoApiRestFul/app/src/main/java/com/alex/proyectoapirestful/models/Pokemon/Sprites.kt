@@ -1,4 +1,4 @@
-package com.alex.proyectoapirestful.models.Pokemon
+package com.alex.proyectoapirestful.models.pokemon
 
 import com.google.gson.annotations.SerializedName
 

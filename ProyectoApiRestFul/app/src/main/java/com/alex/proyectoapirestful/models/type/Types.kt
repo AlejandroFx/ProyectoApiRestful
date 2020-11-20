@@ -1,10 +1,13 @@
 package com.alex.proyectoapirestful.models.type
 
+import com.alex.proyectoapirestful.models.pokemon.Pokemon
+import com.alex.proyectoapirestful.models.pokemon.ResultsP
 import com.google.gson.annotations.SerializedName
 
 data class Types (
 
-    @SerializedName("slot") val slot: Int,
-    @SerializedName("type") val type: List<Type>
+    @SerializedName("pokemon") val pokemon: List<PokemonT>
+    /*@SerializedName("type") val type: Type*/
+
 
 )

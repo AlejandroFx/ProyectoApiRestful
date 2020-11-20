@@ -4,14 +4,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.CheckBox
 import android.widget.CompoundButton
+import android.widget.ImageView
 import androidx.activity.viewModels
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alex.proyectoapirestful.adapters.PokemonAdapter
 import com.alex.proyectoapirestful.R
-import com.alex.proyectoapirestful.models.Pokemon.PokemonView
+import com.alex.proyectoapirestful.models.pokemon.PokemonView
 import com.alex.proyectoapirestful.viewModels.MainActivityViewModel
+import com.bumptech.glide.Glide
+
+@BindingAdapter("imageUrl")
+fun loadImage(view: ImageView, url: String){
+    Glide.with(view.context)
+        .load(url)
+        .into(view)
+}
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var checkGround: CheckBox
     private lateinit var checkElectric: CheckBox
     private lateinit var checkBug: CheckBox
+    var tipo: String =""
 
     private val mainActivityViewModel: MainActivityViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,11 +42,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val recyclerView= findViewById<RecyclerView>(R.id.recyclerViewPokémon)
-        val pokemonAdapter=
-            PokemonAdapter();
-        recyclerView.layoutManager= LinearLayoutManager(this)
-        recyclerView.adapter= pokemonAdapter
+
 
         checkWater = findViewById<CheckBox>(R.id.checkBoxWater)
         checkFire = findViewById<CheckBox>(R.id.checkBoxFire)
@@ -47,6 +54,26 @@ class MainActivity : AppCompatActivity() {
         checkElectric = findViewById<CheckBox>(R.id.checkBoxElectric)
         checkBug = findViewById<CheckBox>(R.id.checkBoxBug)
 
+        checkWater.setOnCheckedChangeListener(changeChecked)
+        checkFire.setOnCheckedChangeListener(changeChecked)
+        checkGosth.setOnCheckedChangeListener(changeChecked)
+        checkGrass.setOnCheckedChangeListener(changeChecked)
+        checkPoison.setOnCheckedChangeListener(changeChecked)
+        checkFlying.setOnCheckedChangeListener(changeChecked)
+        checkGround.setOnCheckedChangeListener(changeChecked)
+        checkElectric.setOnCheckedChangeListener(changeChecked)
+        checkBug.setOnCheckedChangeListener(changeChecked)
+
+
+
+    }
+    private val changeChecked = CompoundButton.OnCheckedChangeListener { button, checked ->
+
+        val recyclerView= findViewById<RecyclerView>(R.id.recyclerViewPokémon)
+        val pokemonAdapter=
+            PokemonAdapter();
+        recyclerView.layoutManager= LinearLayoutManager(this)
+        recyclerView.adapter= pokemonAdapter
 
         mainActivityViewModel.pokemonListLiveData.observe(this,
             Observer<List<PokemonView>> {
@@ -54,10 +81,6 @@ class MainActivity : AppCompatActivity() {
                 pokemonAdapter.notifyDataSetChanged()
             }
         )
-
-    }
-    private val changeChecked = CompoundButton.OnCheckedChangeListener { button, checked ->
-        var tipo: String =""
 
         if(checkWater.isChecked ){
             tipo=checkWater.text.toString()
@@ -96,7 +119,9 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        mainActivityViewModel.getPokemon()
+        mainActivityViewModel.getType(tipo)
+
 
     }
+
 }

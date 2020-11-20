@@ -6,7 +6,8 @@
 <data>
     <variable
         name="pokemon"
-        type="com.alex.proyectoapirestful.models.Pokemon.PokemonView" />
+        type="com.alex.proyectoapirestful.models.pokemon.PokemonView" />
+
 </data>
 <com.google.android.material.card.MaterialCardView
     android:layout_width="match_parent"

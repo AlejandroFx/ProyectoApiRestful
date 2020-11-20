@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alex.proyectoapirestful.databinding.PokemonInfoBinding
-import com.alex.proyectoapirestful.models.Pokemon.PokemonView
+import com.alex.proyectoapirestful.models.pokemon.PokemonView
 import com.alex.proyectoapirestful.views.AbilityActivity
 
 class PokemonAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(){
@@ -18,9 +18,6 @@ class PokemonAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         listPokemon.addAll(data)
 
     }
-
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context);

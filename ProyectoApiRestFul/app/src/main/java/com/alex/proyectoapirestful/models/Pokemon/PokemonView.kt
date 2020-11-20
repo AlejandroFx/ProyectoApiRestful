@@ -1,4 +1,4 @@
-package com.alex.proyectoapirestful.models.Pokemon
+package com.alex.proyectoapirestful.models.pokemon
 
 data class PokemonView (
     var sprite: String,
