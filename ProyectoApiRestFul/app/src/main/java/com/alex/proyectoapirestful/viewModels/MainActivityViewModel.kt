@@ -43,16 +43,20 @@ class MainActivityViewModel(application: Application): AndroidViewModel(applicat
         viewModelScope.launch {
             val type = pokemonRepository.getByType(nameTipo)
             val image : String=""
-            val ability: String=""
+            val ability: String="keen-eye"
             val listPokemon = type.pokemon.map { result ->
                // val typeUrl = pokemonRepository.getTypeByUrl(result.url)
+                //val pokemonUrl=pokemonRepository.getPokemonByUrl(result.pokemon.url)
+                val pokemonByName=pokemonRepository.getByPokemon(result.pokemon.name)
 
                 PokemonView(
-                    image,
-                    //pokemonRepository.getByPokemon(result.pokemon.name).sprites.front_default,
+                   // image,
+                    //pokemonRepository.getPokemonByUrl(result.pokemon.url).sprites.front_default,
+                    pokemonByName.sprites.front_default,
                     result.pokemon.name,
-                   // pokemonRepository.getByPokemon(result.pokemon.name).abilities.first().ability.name,
-                    ability,
+                    //ability,
+                   pokemonByName.abilities.first().ability.name,
+                    //pokemonRepository.getPokemonByUrl(result.pokemon.url).abilities.first().ability.name,
                     nameTipo
                 )
 

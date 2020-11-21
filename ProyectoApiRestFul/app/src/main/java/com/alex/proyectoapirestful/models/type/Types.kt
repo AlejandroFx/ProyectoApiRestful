@@ -9,5 +9,4 @@ data class Types (
     @SerializedName("pokemon") val pokemon: List<PokemonT>
     /*@SerializedName("type") val type: Type*/
 
-
 )

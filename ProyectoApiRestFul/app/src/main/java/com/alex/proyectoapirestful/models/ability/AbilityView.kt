@@ -1,6 +1,8 @@
 package com.alex.proyectoapirestful.models.ability
 
 data class AbilityView (
-    val name: String,
-    val effect: String
+    var name: String?,
+    var effect: String,
+    var sprite: String,
+    var namePokemon: String
 )

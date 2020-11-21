@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context=".views.MainActivity">
 
     <TextView
@@ -11,106 +12,15 @@
         style="@style/Base.Widget.MaterialComponents.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:text="Pokémon App"
+        android:textColor="#FF5722"
         android:textSize="32dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <CheckBox
-        android:id="@+id/checkBoxWater"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:text="whater"
-        app:layout_constraintEnd_toStartOf="@+id/checkBoxGround"
-        app:layout_constraintHorizontal_bias="0.679"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
-
-    <CheckBox
-        android:id="@+id/checkBoxGround"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        android:text="ground"
-        app:layout_constraintEnd_toStartOf="@+id/checkBoxGrass"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
-
-    <CheckBox
-        android:id="@+id/checkBoxFlying"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="16dp"
-        android:text="flying"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxFire" />
-
-    <CheckBox
-        android:id="@+id/checkBoxGrass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="72dp"
-        android:text="grass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
-
-    <CheckBox
-        android:id="@+id/checkBoxPoison"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="64dp"
-        android:text="poison"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxElectric" />
-
-    <CheckBox
-        android:id="@+id/checkBoxGosth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="28dp"
-        android:text="gosth"
-        app:layout_constraintEnd_toStartOf="@+id/checkBoxPoison"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxBug" />
-
-    <CheckBox
-        android:id="@+id/checkBoxElectric"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="60dp"
-        android:text="electric"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxGrass" />
-
-    <CheckBox
-        android:id="@+id/checkBoxFire"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="12dp"
-        android:text="fire"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxWater" />
-
-    <CheckBox
-        android:id="@+id/checkBoxBug"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="40dp"
-        android:text="bug"
-        app:layout_constraintEnd_toStartOf="@+id/checkBoxElectric"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxGround" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPokémon"
@@ -128,7 +38,92 @@
         android:layout_height="wrap_content"
         android:text="Pokémon Filtered"
         android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewPokémon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/radioGroup2"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo">
+
+        <RadioButton
+            android:id="@+id/rbWater"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="water" />
+
+        <RadioButton
+            android:id="@+id/rbFire"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="fire" />
+
+        <RadioButton
+            android:id="@+id/rbFlying"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="flying" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/radioGroup3"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo">
+
+        <RadioButton
+            android:id="@+id/rbGround"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ground" />
+
+        <RadioButton
+            android:id="@+id/rbBug"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bug" />
+
+        <RadioButton
+            android:id="@+id/rbGosth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="gosth" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radioGroup3"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo">
+
+        <RadioButton
+            android:id="@+id/rbGrass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="grass" />
+
+        <RadioButton
+            android:id="@+id/rbDragon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="dragon" />
+
+        <RadioButton
+            android:id="@+id/rbPoison"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="poison" />
+    </RadioGroup>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

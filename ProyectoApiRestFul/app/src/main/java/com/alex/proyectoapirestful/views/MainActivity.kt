@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.CheckBox
 import android.widget.CompoundButton
 import android.widget.ImageView
+import android.widget.RadioButton
 import androidx.activity.viewModels
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.Observer
@@ -25,15 +26,15 @@ fun loadImage(view: ImageView, url: String){
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var checkWater: CheckBox
-    private lateinit var checkFire: CheckBox
-    private lateinit var checkGosth: CheckBox
-    private lateinit var checkGrass: CheckBox
-    private lateinit var checkPoison: CheckBox
-    private lateinit var checkFlying: CheckBox
-    private lateinit var checkGround: CheckBox
-    private lateinit var checkElectric: CheckBox
-    private lateinit var checkBug: CheckBox
+    private lateinit var rbWater: RadioButton
+    private lateinit var rbFire: RadioButton
+    private lateinit var rbFlying: RadioButton
+    private lateinit var rbGround: RadioButton
+    private lateinit var rbBug: RadioButton
+    private lateinit var rbGosth: RadioButton
+    private lateinit var rbGrass: RadioButton
+    private lateinit var rbDragon: RadioButton
+    private lateinit var rbPoison: RadioButton
     var tipo: String =""
 
     private val mainActivityViewModel: MainActivityViewModel by viewModels()
@@ -41,81 +42,78 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        rbWater= findViewById<RadioButton>(R.id.rbWater)
+        rbFire= findViewById<RadioButton>(R.id.rbFire)
+        rbFlying= findViewById<RadioButton>(R.id.rbFlying)
+        rbGround= findViewById<RadioButton>(R.id.rbGround)
+        rbBug= findViewById<RadioButton>(R.id.rbBug)
+        rbGosth= findViewById<RadioButton>(R.id.rbGosth)
+        rbGrass= findViewById<RadioButton>(R.id.rbGrass)
+        rbDragon= findViewById<RadioButton>(R.id.rbDragon)
+        rbPoison= findViewById<RadioButton>(R.id.rbPoison)
+
+        rbWater.setOnCheckedChangeListener(changeChecked)
+        rbFire.setOnCheckedChangeListener(changeChecked)
+        rbFlying.setOnCheckedChangeListener(changeChecked)
+        rbGround.setOnCheckedChangeListener(changeChecked)
+        rbBug.setOnCheckedChangeListener(changeChecked)
+        rbGosth.setOnCheckedChangeListener(changeChecked)
+        rbGrass.setOnCheckedChangeListener(changeChecked)
+        rbDragon.setOnCheckedChangeListener(changeChecked)
+        rbPoison.setOnCheckedChangeListener(changeChecked)
 
 
 
-        checkWater = findViewById<CheckBox>(R.id.checkBoxWater)
-        checkFire = findViewById<CheckBox>(R.id.checkBoxFire)
-        checkGosth = findViewById<CheckBox>(R.id.checkBoxGosth)
-        checkGrass = findViewById<CheckBox>(R.id.checkBoxGrass)
-        checkPoison = findViewById<CheckBox>(R.id.checkBoxPoison)
-        checkFlying = findViewById<CheckBox>(R.id.checkBoxFlying)
-        checkGround = findViewById<CheckBox>(R.id.checkBoxGround)
-        checkElectric = findViewById<CheckBox>(R.id.checkBoxElectric)
-        checkBug = findViewById<CheckBox>(R.id.checkBoxBug)
-
-        checkWater.setOnCheckedChangeListener(changeChecked)
-        checkFire.setOnCheckedChangeListener(changeChecked)
-        checkGosth.setOnCheckedChangeListener(changeChecked)
-        checkGrass.setOnCheckedChangeListener(changeChecked)
-        checkPoison.setOnCheckedChangeListener(changeChecked)
-        checkFlying.setOnCheckedChangeListener(changeChecked)
-        checkGround.setOnCheckedChangeListener(changeChecked)
-        checkElectric.setOnCheckedChangeListener(changeChecked)
-        checkBug.setOnCheckedChangeListener(changeChecked)
-
-
-
-    }
-    private val changeChecked = CompoundButton.OnCheckedChangeListener { button, checked ->
-
-        val recyclerView= findViewById<RecyclerView>(R.id.recyclerViewPokémon)
-        val pokemonAdapter=
-            PokemonAdapter();
-        recyclerView.layoutManager= LinearLayoutManager(this)
-        recyclerView.adapter= pokemonAdapter
 
         mainActivityViewModel.pokemonListLiveData.observe(this,
             Observer<List<PokemonView>> {
+                val recyclerView= findViewById<RecyclerView>(R.id.recyclerViewPokémon)
+                val pokemonAdapter=
+                    PokemonAdapter();
+                recyclerView.layoutManager= LinearLayoutManager(this)
+                recyclerView.adapter= pokemonAdapter
                 pokemonAdapter.addResults(it)
                 pokemonAdapter.notifyDataSetChanged()
             }
         )
 
-        if(checkWater.isChecked ){
-            tipo=checkWater.text.toString()
+    }
+    private val changeChecked = CompoundButton.OnCheckedChangeListener { button, checked ->
+
+        if(rbWater.isChecked ){
+            tipo=rbWater.text.toString()
 
         }
-        if(checkFire.isChecked ){
-            tipo=checkFire.text.toString()
+        if(rbFire.isChecked ){
+            tipo=rbFire.text.toString()
 
         }
-        if(checkGosth.isChecked ){
-            tipo=checkGosth.text.toString()
+        if(rbFlying.isChecked ){
+            tipo=rbFlying.text.toString()
 
         }
-        if(checkGrass.isChecked ){
-            tipo=checkGrass.text.toString()
+        if(rbGround.isChecked ){
+            tipo=rbGround.text.toString()
 
         }
-        if(checkPoison.isChecked ){
-            tipo=checkPoison.text.toString()
+        if(rbBug.isChecked ){
+            tipo=rbBug.text.toString()
 
         }
-        if(checkFlying.isChecked ){
-            tipo=checkFlying.text.toString()
+        if(rbGosth.isChecked ){
+            tipo=rbGosth.text.toString()
 
         }
-        if(checkGround.isChecked ){
-            tipo=checkGround.text.toString()
+        if(rbGrass.isChecked ){
+            tipo=rbGrass.text.toString()
 
         }
-        if(checkElectric.isChecked ){
-            tipo=checkElectric.text.toString()
+        if(rbDragon.isChecked ){
+            tipo=rbDragon.text.toString()
 
         }
-        if(checkBug.isChecked ){
-            tipo=checkBug.text.toString()
+        if(rbPoison.isChecked ){
+            tipo=rbPoison.text.toString()
 
         }
 

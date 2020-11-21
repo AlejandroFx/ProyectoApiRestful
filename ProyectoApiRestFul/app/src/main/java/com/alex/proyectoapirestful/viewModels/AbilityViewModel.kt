@@ -1,0 +1,47 @@
+package com.alex.proyectoapirestful.viewModels
+
+import android.app.Application
+import android.view.ViewGroup
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import androidx.recyclerview.widget.RecyclerView
+import com.alex.proyectoapirestful.models.ability.AbilityView
+import com.alex.proyectoapirestful.models.pokemon.PokemonView
+import com.alex.proyectoapirestful.repositories.PokemonRepository
+import kotlinx.coroutines.launch
+
+class AbilityViewModel (application: Application) : AndroidViewModel(application){
+
+    val pokemonRepository = PokemonRepository();
+    val abilityListLiveData = MutableLiveData<List<AbilityView>>()
+
+    fun getAbility(nameAbility: String?) {
+
+        viewModelScope.launch {
+            val ability = pokemonRepository.getByAbility(nameAbility)
+
+            val image : String=""
+            val effect: String ="te paraliza we"
+            val listAbility = ability.pokemon.map { result ->
+
+                val pokemonUrl=pokemonRepository.getPokemonByUrl(result.pokemon.url)
+
+                AbilityView(
+                    nameAbility,
+                    effect,
+                    image,
+                    //pokemonRepository.getPokemonByUrl(result.pokemon.url).sprites.front_default,
+                    result.pokemon.name
+
+                )
+
+
+
+            }
+            abilityListLiveData.postValue(listAbility)
+        }
+    }
+
+
+}

@@ -11,7 +11,7 @@ import com.alex.proyectoapirestful.views.AbilityActivity
 class PokemonAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     private val listPokemon= mutableListOf<PokemonView>()
-
+     var ability: String=""
 
     fun addResults(data: List<PokemonView>){
 
@@ -50,6 +50,7 @@ class PokemonAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(){
             cardPokemonInfoBinding.textViewAbility.setOnClickListener { click ->
                 val intent= Intent(this.itemView.context, AbilityActivity:: class.java)
                 intent.putExtra("Ability", pokemonView.ability)
+                ability=cardPokemonInfoBinding.textViewAbility.text.toString()
 
                 this.itemView.context.startActivity(intent)
             }
