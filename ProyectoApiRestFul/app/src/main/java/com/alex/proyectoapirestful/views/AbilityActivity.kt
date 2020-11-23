@@ -1,6 +1,7 @@
 package com.alex.proyectoapirestful.views
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,7 @@ import com.alex.proyectoapirestful.models.pokemon.PokemonView
 import com.alex.proyectoapirestful.viewModels.AbilityViewModel
 import com.alex.proyectoapirestful.viewModels.MainActivityViewModel
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.ability_pokemon.*
 
 @BindingAdapter("imageUrl")
 fun loadImageA(view: ImageView, url: String){
@@ -49,16 +51,20 @@ class AbilityActivity : AppCompatActivity(){
 
                 pokemonAbility.addResults(it)
                 pokemonAbility.notifyDataSetChanged()
+                textViewEffect.text=it[0].effect
             }
         )
         abilityViewModel.abilityListLiveData .observe(this,
             Observer<List<AbilityView>> {
                 abilityAdapter.addResults(it)
                 binding.textViewAbility.text=Ability
+
                 abilityAdapter.notifyDataSetChanged()
 
             }
         )
+
        abilityViewModel.getAbility(Ability)
+        //textViewEffect.text=abilityViewModel.effectt
     }
 }

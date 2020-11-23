@@ -17,30 +17,7 @@ import kotlin.coroutines.suspendCoroutine
 
 class PokemonRepository {
 
-    /*suspend fun  getPokemon(): Pokemon{
-        return suspendCoroutine {continuation ->
-            RetroFitInstance.pokemonService.getPokemon().enqueue(object : retrofit2.Callback<Pokemon>{
-                override fun onFailure(call: Call<Pokemon>, t: Throwable) {
-                    continuation.resumeWithException(t)
-                }
 
-                override fun onResponse(
-                    call: Call<Pokemon>,
-                    response: Response<Pokemon>
-                ) {
-                    if(response.isSuccessful){
-                        continuation.resume(response.body()!!)
-                    }else{
-                        continuation.resumeWithException(Exception("La respuesta del Pokemon no fue exitosa"))
-
-                    }
-                }
-
-
-            })
-
-        }
-    }*/
 
     suspend fun getPokemonByUrl(url: String) = suspendCoroutine<PokemonURL> {
         RetroFitInstance.pokemonService.getPokemonByUrl(url).enqueue(
@@ -57,30 +34,6 @@ class PokemonRepository {
         )
     }
 
-    /*suspend fun  getType(): Type {
-        return suspendCoroutine {continuation ->
-            RetroFitInstance.pokemonService.getType().enqueue(object : retrofit2.Callback<Type>{
-                override fun onFailure(call: Call<Type>, t: Throwable) {
-                    continuation.resumeWithException(t)
-                }
-
-                override fun onResponse(
-                    call: Call<Type>,
-                    response: Response<Type>
-                ) {
-                    if(response.isSuccessful){
-                        continuation.resume(response.body()!!)
-                    }else{
-                        continuation.resumeWithException(Exception("La respuesta del tipo no fue exitosa"))
-
-                    }
-                }
-
-
-            })
-
-        }
-    }*/
 
     suspend fun  getByType(tipo: String): Types {
         return suspendCoroutine {continuation ->

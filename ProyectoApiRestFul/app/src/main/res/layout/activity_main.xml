@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:background="#222E71"
     tools:context=".views.MainActivity">
 
     <TextView
@@ -12,9 +13,9 @@
         style="@style/Base.Widget.MaterialComponents.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:text="Pokémon App"
-        android:textColor="#FF5722"
+        android:textColor="#FFFFFF"
         android:textSize="32dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,106 +25,97 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPokémon"
-        android:layout_width="0dp"
-        android:layout_height="441dp"
+        android:layout_width="350dp"
+        android:layout_height="298dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewPokemonFiltered"
+        app:layout_constraintVertical_bias="0.846" />
 
     <TextView
         android:id="@+id/textViewPokemonFiltered"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="348dp"
         android:text="Pokémon Filtered"
+        android:textColor="#FFFFFF"
         android:textSize="24dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewPokémon"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <RadioGroup
-        android:layout_width="110dp"
+        android:id="@+id/radioGroup"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/radioGroup2"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitulo">
 
         <RadioButton
             android:id="@+id/rbWater"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="water" />
+            android:text="water"
+            android:textColor="#FFFFFF" />
 
         <RadioButton
             android:id="@+id/rbFire"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="fire" />
+            android:text="fire"
+            android:textColor="#FFFFFF" />
 
         <RadioButton
             android:id="@+id/rbFlying"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="flying" />
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/radioGroup2"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/radioGroup3"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo">
+            android:text="flying"
+            android:textColor="#FFFFFF" />
 
         <RadioButton
             android:id="@+id/rbGround"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ground" />
-
-        <RadioButton
-            android:id="@+id/rbBug"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="bug" />
-
-        <RadioButton
-            android:id="@+id/rbGosth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="gosth" />
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/radioGroup3"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo">
-
-        <RadioButton
-            android:id="@+id/rbGrass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="grass" />
+            android:text="ground"
+            android:textColor="#FFFFFF" />
 
         <RadioButton
             android:id="@+id/rbDragon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="dragon" />
-
-        <RadioButton
-            android:id="@+id/rbPoison"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="poison" />
+            android:text="dragon"
+            android:textColor="#FFFFFF" />
     </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonAleatorio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="192dp"
+        android:layout_marginEnd="48dp"
+        android:background="#F8F6FA"
+        android:text="Type"
+        android:textColor="#455EEA"
+        app:layout_constraintCircleRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintStart_toEndOf="@+id/radioGroup"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

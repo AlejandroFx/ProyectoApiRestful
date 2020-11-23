@@ -15,18 +15,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#222E71">
 
         <TextView
             android:id="@+id/textViewAbility"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="@{ability.name}"
             android:textSize="32dp"
-            android:textColor="#E12012"
+            android:textColor="#FFFFFF"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +40,9 @@
             android:layout_marginStart="48dp"
             android:layout_marginTop="20dp"
             android:text="Effect"
+            android:textStyle="bold"
             android:textSize="18dp"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewAbility" />
 
@@ -50,26 +53,34 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
-            android:text="@{ability.effect}"
+            android:text=""
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewTitleEfect" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/pkWhitThisAbility"
-            android:layout_width="405dp"
-            android:layout_height="383dp"
+            android:layout_width="351dp"
+            android:layout_height="328dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewEffect"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.904" />
 
         <TextView
             android:id="@+id/textViewTittlePokemonAbility"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:text="Pokémon with this ability"
+            android:textColor="#FFFFFF"
             android:textSize="24dp"
             app:layout_constraintBottom_toTopOf="@+id/pkWhitThisAbility"
             app:layout_constraintEnd_toEndOf="parent"

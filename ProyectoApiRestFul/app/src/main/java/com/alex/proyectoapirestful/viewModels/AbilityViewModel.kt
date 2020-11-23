@@ -15,33 +15,30 @@ class AbilityViewModel (application: Application) : AndroidViewModel(application
 
     val pokemonRepository = PokemonRepository();
     val abilityListLiveData = MutableLiveData<List<AbilityView>>()
+    var effectt :String="queso"
 
     fun getAbility(nameAbility: String?) {
 
         viewModelScope.launch {
             val ability = pokemonRepository.getByAbility(nameAbility)
-
-            val image : String=""
-            val effect: String ="te paraliza we"
+            val effect: String =ability.effect[1].effect
+            effectt=effect
             val listAbility = ability.pokemon.map { result ->
 
                 val pokemonUrl=pokemonRepository.getPokemonByUrl(result.pokemon.url)
+                val sprite=pokemonUrl.sprites.front_default
 
                 AbilityView(
                     nameAbility,
                     effect,
-                    image,
-                    //pokemonRepository.getPokemonByUrl(result.pokemon.url).sprites.front_default,
+                    sprite,
                     result.pokemon.name
 
                 )
 
-
-
             }
+
             abilityListLiveData.postValue(listAbility)
         }
     }
-
-
 }
